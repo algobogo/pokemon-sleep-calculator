@@ -41,7 +41,7 @@ def monte_carlo_simulation(skillsets, target_skills, level, fix_gold_level):
 # Streamlit UI
 st.title("포켓몬슬립 서브스킬 확률 계산기")
 
-iterations = st.number_input("반복 횟수 (Iterations):", min_value=100, max_value=1000000, value=500000, step=100)
+iterations = st.slider("반복 횟수 (Iterations):", min_value=100000, max_value=1000000, value=500000, step=100)
 selected_level = st.selectbox("레벨 선택:", [10, 25, 50])
 target_skills = st.multiselect("원하는 스킬 선택 (최대 3개)", 
     ["나무열매수S", "수면EXP보너스", "도우미 보너스", "리서치 EXP 보너스", "꿈의조각 보너스", "스킬 레벨업M", "기력회복 보너스",
