@@ -34,6 +34,8 @@ def monte_carlo_simulation(skillsets, target_skills, level, fix_gold_level):
         skillsets = [s for s in skillsets if s[0] in skills["gold"]]
     elif fix_gold_level == 2:
         skillsets = [s for s in skillsets if s[0] in skills["gold"] and s[1] in skills["gold"]]
+    elif fix_gold_level == 3:
+        skillsets = [s for s in skillsets if s[0] in skills["gold"] and s[1] in skills["gold"] and s[2] in skills["gold"]]
     
     match_count = sum(1 for s in skillsets if all(skill in s[:num_skills] for skill in target_skills))
     return round((match_count / len(skillsets)) * 100, 1) if skillsets else 0
@@ -48,7 +50,7 @@ target_skills = st.multiselect("원하는 스킬 선택 (최대 3개)",
      "도우미 스피드M", "식재료 확률업 M", "최대 소지 수 업L", "최대 소지 수 업M", "스킬확률업M", "스킬 레벨업S",
      "도우미 스피드S", "식재료 확률업 S", "최대 소지 수 업S", "스킬확률업S"])
 
-fix_gold_level = st.radio("금색 스킬 고정:", [0, 1, 2], format_func=lambda x: ["고정 없음", "10레벨 금색 고정", "10,25레벨 금색 고정"][x])
+fix_gold_level = st.radio("금색 스킬 고정:", [0, 1, 2, 3], format_func=lambda x: ["고정 없음", "10레벨 금색 고정", "10,25레벨 금색 고정", "10,25,50레벨 금색 고정"][x])
 
 if st.button("확률 계산"):
     if not target_skills:
