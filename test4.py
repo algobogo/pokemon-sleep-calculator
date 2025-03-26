@@ -58,4 +58,4 @@ if st.button("확률 계산"):
     else:
         skillsets = generate_skillsets(iterations)
         probability = monte_carlo_simulation(skillsets, target_skills, selected_level, fix_gold_level)
-        st.success(f"해당 조합의 확률: {probability:.2f}%")
+        st.success(f"해당 조합의 확률: {probability:.4f}%")
